@@ -8,24 +8,27 @@ expenses = {}
 
 def addExpense(description, amount):
     global expenses
-    if expenses:
-        id = max([int(key) for key in expenses.keys()]) + 1
+    if amount == int or amount == float:
+        if expenses:
+            id = max([int(key) for key in expenses.keys()]) + 1
+        else:
+            id = 1
+
+        expense = {
+            "ID" : id,
+            "Date" : datetime.datetime.now().strftime("%Y-%m-%d"),
+            "Description" : description,
+            "Amount" : amount
+        }
+
+        expenses[str(id)] = expense
+
+        with open(file_path, "w") as json_file:
+            json.dump(expenses, json_file, indent=4)
+
+        print(f"Expense added successfully (ID:{id})")
     else:
-        id = 1
-
-    expense = {
-        "ID" : id,
-        "Date" : datetime.datetime.now().strftime("%Y-%m-%d"),
-        "Description" : description,
-        "Amount" : amount
-    }
-
-    expenses[str(id)] = expense
-
-    with open(file_path, "w") as json_file:
-        json.dump(expenses, json_file, indent=4)
-
-    print(f"Expense added successfully (ID:{id})")
+        print("Invalid amount. Please enter a valid number.")
     return id
 
 def deleteExpense(id):
