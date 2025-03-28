@@ -9,3 +9,5 @@ The followings commands are:
 -list: provides a simple list in table format, so the user can see all expenses, including the ID, date, description and amount.
 
 -summary <month>: provides a summmary of the expenses, by adding the total expenses. This command can optionnally be filtered by month, using an integer number corresponding to that month (1 is January, 2 is February, 3 is March and so on).
+
+Project URL: https://roadmap.sh/projects/expense-tracker
