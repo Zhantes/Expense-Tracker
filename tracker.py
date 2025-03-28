@@ -8,7 +8,7 @@ expenses = {}
 
 def addExpense(description, amount):
     global expenses
-    if amount == int or amount == float:
+    if isinstance(int(amount), (int, float)):
         if expenses:
             id = max([int(key) for key in expenses.keys()]) + 1
         else:
@@ -28,7 +28,7 @@ def addExpense(description, amount):
 
         print(f"Expense added successfully (ID:{id})")
     else:
-        print("Invalid amount. Please enter a valid number.")
+        print("Could not add expense.")
     return id
 
 def deleteExpense(id):
